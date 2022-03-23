@@ -1,38 +1,23 @@
-import Button from "./Button";
-import style from "./App.module.css";
+//cleanup
 import { useState, useEffect } from "react";
 
+function HelloTest() {
+  useEffect(() => {
+    console.log("created");
+    return () => console.log("destroyed");
+  }, []);
+  return <h1>hello</h1>;
+}
+
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
-
-  const onClick = () => setValue((pre) => pre + 1);
-  const onChange = (event) => setKeyword(event.target.value);
-
-  //한번만
-  useEffect(() => console.log("onlyOnce"), []);
-  // useEffect(() => {
-  //   if (keyword !== "" && keyword.length > 5) {
-  //     console.log("keyword", keyword);
-  //   }
-  // }, [keyword]);
-  useEffect(
-    () => console.log("I run when counter,keyword changed"),
-    [counter, keyword]
-  );
+  const [show, setShow] = useState(false);
+  const Click = () => {
+    setShow((prev) => !prev);
+  };
   return (
     <div>
-      <h1 className={style.title}>Welcome</h1>
-      <input
-        value={keyword}
-        type="text"
-        placeholder="Search here..."
-        onChange={onChange}
-      ></input>
-      <Button text={"continue"} />
-      <Button text={"stop"} />
-      <h2>{counter}</h2>
-      <button onClick={onClick}>click me</button>
+      {show ? <HelloTest /> : null}
+      <button onClick={Click}>{show ? "Hide" : "Show"}</button>
     </div>
   );
 }
