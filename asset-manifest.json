@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/reactproject/static/css/main.70a8a679.css",
-    "main.js": "/reactproject/static/js/main.100e2b1c.js",
-    "index.html": "/reactproject/index.html",
-    "main.70a8a679.css.map": "/reactproject/static/css/main.70a8a679.css.map",
-    "main.100e2b1c.js.map": "/reactproject/static/js/main.100e2b1c.js.map"
+    "main.css": "/octocat.github.io/static/css/main.70a8a679.css",
+    "main.js": "/octocat.github.io/static/js/main.100e2b1c.js",
+    "index.html": "/octocat.github.io/index.html",
+    "main.70a8a679.css.map": "/octocat.github.io/static/css/main.70a8a679.css.map",
+    "main.100e2b1c.js.map": "/octocat.github.io/static/js/main.100e2b1c.js.map"
   },
   "entrypoints": [
     "static/css/main.70a8a679.css",
