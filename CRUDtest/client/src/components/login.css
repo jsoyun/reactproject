@@ -1,0 +1,29 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.information {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(0, 140, 196);
+  align-items: center;
+  padding-bottom: 20px;
+}
+.information label {
+  margin: 3px;
+}
+.information input {
+  width: 200px;
+  height: 30px;
+  font-size: 17px;
+  padding-left: 5px;
+}
+
+.information button {
+  margin-top: 10px;
+}
+.information button:hover {
+  cursor: pointer;
+  background-color: rgb(167, 0, 0);
+}
