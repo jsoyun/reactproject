@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
-
+const cors = require("cors");
+app.use(cors());
+app.use(express.json());
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
@@ -15,6 +17,7 @@ app.post("/create", (req, res) => {
   const country = req.body.frontcountry;
   const position = req.body.frontposition;
   const wage = req.body.frontwage;
+  console.log(req.body.frontname, "레큐바디의 프론트");
 
   db.query(
     "INSERT INTO employees (name, age, country, position, wage) VALUES (?,?,?,?,?)",
@@ -28,6 +31,16 @@ app.post("/create", (req, res) => {
       }
     }
   );
+});
+
+app.get("/employees", (req, res) => {
+  db.query("SELECT * FROM employees", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.listen(3001, () => {

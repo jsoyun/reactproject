@@ -20,10 +20,28 @@
   padding-left: 5px;
 }
 
-.information button {
+.information button,
+.showDB-button button {
   margin-top: 10px;
 }
 .information button:hover {
   cursor: pointer;
   background-color: rgb(167, 0, 0);
+}
+.showDB {
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.employee {
+  width: 700px;
+
+  background-color: burlywood;
+  margin-bottom: 3px;
+  padding-bottom: 0;
+  display: flex;
+}
+.employee h3 {
+  padding: 10px;
 }
