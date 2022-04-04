@@ -9,6 +9,7 @@ function Login() {
   const [position, setPosition] = useState("");
   const [wage, setWage] = useState(0);
   const [employeesList, setEmployeesList] = useState([]);
+  const [newWage, setNewWage] = useState(0);
 
   const addEmployee = () => {
     console.log(name, "dfdfd");
@@ -19,30 +20,61 @@ function Login() {
       frontposition: position,
       frontwage: wage,
     }).then(
-      () => {
-        console.log("success");
-      }
       // () => {
-      //   //기존 배열에 방금추가한거 바로 띄우게 하는거인가? 배경은 뜨는데 값이 안띄워지네..흠
-      //   //암튼 여러 방법이 있다고 함 있다가 해보자
-      //   setEmployeesList([
-      //     ...employeesList,
-      //     {
-      //       frontname: name,
-      //       frontage: age,
-      //       frontcountry: country,
-      //       frontposition: position,
-      //       frontwage: wage,
-      //     },
-      //   ]);
-      //   console.log("zzzzzzz");
+      //   console.log("success");
       // }
+      () => {
+        //기존 배열에 방금추가한거 바로 띄우게 하는거인가? 배경은 뜨는데 값이 안띄워지네..흠
+        //암튼 여러 방법이 있다고 함 있다가 해보자
+        setEmployeesList([
+          ...employeesList,
+          {
+            frontname: name,
+            frontage: age,
+            frontcountry: country,
+            frontposition: position,
+            frontwage: wage,
+          },
+        ]);
+        console.log("zzzzzzz");
+      }
     );
   };
 
   const getEmployee = () => {
     Axios.get("http://localhost:3001/employees").then((response) => {
       setEmployeesList(response.data);
+    });
+  };
+  const updateEmployeeWage = (id) => {
+    Axios.put("http://localhost:3001/update", {
+      frontWage: newWage,
+      frontId: id,
+    }).then((response) => {
+      // alert("수정완료");
+      setEmployeesList(
+        employeesList.map((val) => {
+          return val.id == id
+            ? {
+                id: val.id,
+                name: val.name,
+                country: val.country,
+                age: val.age,
+                position: val.position,
+                wage: newWage,
+              }
+            : val;
+        })
+      );
+    });
+  };
+  const deleteEmployee = (id) => {
+    Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
+      setEmployeesList(
+        employeesList.filter((val) => {
+          return val.id != id;
+        })
+      );
     });
   };
 
@@ -95,11 +127,35 @@ function Login() {
           {employeesList.map((val, index) => {
             return (
               <div className="employee">
-                <h3>{val.name}</h3>
-                <h3>{val.age}</h3>
-                <h3>{val.country}</h3>
-                <h3>{val.position}</h3>
-                <h3>{val.wage}</h3>
+                <div>
+                  <h3>{val.name}</h3>
+                  <h3>{val.age}</h3>
+                  <h3>{val.country}</h3>
+                  <h3>{val.position}</h3>
+                  <h3>{val.wage}</h3>
+                </div>
+                <div>
+                  <input
+                    type="text"
+                    onChange={(event) => {
+                      setNewWage(event.target.value);
+                    }}
+                  />
+                </div>
+                <button
+                  onClick={() => {
+                    updateEmployeeWage(val.id);
+                  }}
+                >
+                  update
+                </button>
+                <button
+                  onClick={() => {
+                    deleteEmployee(val.id);
+                  }}
+                >
+                  delete
+                </button>
               </div>
             );
           })}

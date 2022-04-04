@@ -13,7 +13,7 @@
 .information label {
   margin: 3px;
 }
-.information input {
+input {
   width: 200px;
   height: 30px;
   font-size: 17px;

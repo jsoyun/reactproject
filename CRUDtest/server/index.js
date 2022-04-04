@@ -43,6 +43,34 @@ app.get("/employees", (req, res) => {
   });
 });
 
+app.put("/update", (req, res) => {
+  const id = req.body.frontId;
+  const wage = req.body.frontWage;
+  db.query(
+    "UPDATE employees SET wage = ? WHERE id =? ",
+    [wage, id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+app.delete("/delete/:id", (req, res) => {
+  const id = req.params.id;
+  //테이블이름, 보낼거 , id하나만 보낼거라서 배열로 안묶어줌 걍보내
+  db.query("DELETE FROM employees WHERE id = ?", id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 app.listen(3001, () => {
   console.log("your server is running on 3001~! yeah");
 });
