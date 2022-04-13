@@ -1,0 +1,37 @@
+{
+  "topics": [
+    {
+      "id": 1,
+      "content": "HTML",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "content": "post",
+      "completed": true,
+      "title": "fetch-patch"
+    },
+    {
+      "id": 3,
+      "content": "Javascript",
+      "completed": true
+    },
+    {
+      "id": 4,
+      "content": "post",
+      "completed": true
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "name": "Lee",
+      "role": "developer"
+    },
+    {
+      "id": 2,
+      "name": "Kim",
+      "role": "designer"
+    }
+  ]
+}
