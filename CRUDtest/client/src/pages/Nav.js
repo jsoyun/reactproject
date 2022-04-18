@@ -8,7 +8,7 @@ const Navi = styled.div`
 `;
 
 const Button = styled.button`
-  display: inline-block;
+  /* display: inline-block; */
   border: 0;
   outline: 0;
   background-color: transparent;
@@ -31,14 +31,11 @@ function Nav() {
       <Link to="/login">
         <Button>직원등록오직관리자만</Button>
       </Link>
-      <Link to="/signup">
-        <Button>회원가입</Button>
+      <Link to="/board">
+        <Button>게시판</Button>
       </Link>
       <Link to="/sign">
         <Button>로그인</Button>
-      </Link>
-      <Link to="/sign">
-        <Button>게시판</Button>
       </Link>
     </Navi>
   );
