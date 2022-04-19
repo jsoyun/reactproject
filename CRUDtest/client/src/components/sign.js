@@ -1,5 +1,6 @@
 import React from "react";
-import Signup from "../components/signup";
+
+import { Link } from "react-router-dom";
 import "./sign.css";
 
 const sign = () => {
@@ -11,8 +12,9 @@ const sign = () => {
       <div className="sign_password">
         <input placeholder="비밀번호"></input>
       </div>
-
-      <Signup />
+      <div>
+        <Link to="signup">회원가입</Link>
+      </div>
     </div>
   );
 };
