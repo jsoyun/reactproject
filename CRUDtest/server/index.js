@@ -1,14 +1,45 @@
 const express = require("express");
 const app = express();
+
 const mysql = require("mysql");
 const cors = require("cors");
+const multer = require("multer");
+const path = require("path");
 app.use(cors());
+
 app.use(express.json());
+//이거 필요한거임?
+// app.use(express.static("public"))
+
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
   password: "1234",
   database: "crudtest",
+});
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "Images");
+  },
+  filename: (req, file, cb) => {
+    console.log(file);
+    cb(null, +Date.now() + path.extname(file.originalname));
+  },
+});
+const upload = multer({
+  storage: storage,
+  // fileFilter
+});
+
+app.post("/upload", upload.single("Images"), (req, res) => {
+  const profile = req.body.file;
+  //레큐바디도 언디파인이었음
+  console.log(profile, "프로파일값이", req.body, "레큐바디");
+
+  const obj = JSON.parse(JSON.stringify(req.body)); // req.body = [Object: null prototype] { title: 'product' }
+
+  console.log(obj);
 });
 
 app.post("/create", (req, res) => {
@@ -69,6 +100,25 @@ app.delete("/delete/:id", (req, res) => {
       res.send(result);
     }
   });
+});
+
+app.post("/submit", upload.single(), (req, res) => {
+  const id = req.body.id;
+  const password = req.body.password;
+  const profile = req.body.imageUpload;
+  console.log(profile, "이미지");
+
+  db.query(
+    "INSERT INTO userlist (userId, userPassword, userProfile) VALUES (?,?,?) ",
+    [id, password, profile],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("userlist values inserted");
+      }
+    }
+  );
 });
 
 app.listen(3001, () => {
