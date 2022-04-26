@@ -18,14 +18,14 @@ export default function App() {
           <Text style={styles.temp}>27</Text>
           <Text style={styles.description}>맑음</Text>
         </View>
-        <View style={styles.day}>
+        {/* <View style={styles.day}>
           <Text style={styles.temp}>27</Text>
           <Text style={styles.description}>맑음</Text>
         </View>
         <View style={styles.day}>
           <Text style={styles.temp}>27</Text>
           <Text style={styles.description}>맑음</Text>
-        </View>
+        </View> */}
       </ScrollView>
     </View>
   );
@@ -34,7 +34,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "teal",
+    // backgroundColor: "teal",
   },
   city: {
     flex: 1,
@@ -45,9 +45,9 @@ const styles = StyleSheet.create({
   },
 
   cityName: {
-    fontSize: 68,
+    // fontSize: 68,
     fontStyle: "italic",
-    color: "white",
+    // color: "white",
     fontWeight: "500",
   },
   whether: {
@@ -57,13 +57,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   temp: {
-    color: "white",
-    marginTop: 18,
-    fontSize: 180,
+    // color: "white",
+    // marginTop: 18,
+    // fontSize: 180,
   },
   description: {
-    color: "teal",
-    marginTop: -20,
-    fontSize: 60,
+    // color: "teal",
+    // marginTop: -20,
+    // fontSize: 60,
   },
 });
