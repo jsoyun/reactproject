@@ -103,20 +103,6 @@ app.delete("/delete/:id", (req, res) => {
 
 ///////
 
-// const storage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, "Images");
-//   },
-//   filename: (req, file, cb) => {
-//     console.log(file);
-//     cb(null, +Date.now() + path.extname(file.originalname));
-//   },
-// });
-// const upload = multer({
-//   storage: storage,
-//   // fileFilter
-// });
-//.single("file"); //.single 싱글파일일때 붙인다함
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
@@ -127,32 +113,38 @@ const upload = multer({
     },
   }),
 });
+// const upload = multer({
+//   dest: "Images/",
+//   limits: { fileSize: 5 * 1024 * 1024 },
+// });
 
 // app.post("/up", upload.array("img"), (req, res) => {
 //   console.log(req.files);
 // });
 
 app.post("/submit", upload.single("file"), (req, res) => {
-  const id = req.body.id;
-  const password = req.body.password;
-  const profile = req.files;
-  console.log(req.body.formData);
+  console.log(req.files, "레큐파일ㄴ");
+  console.log(req.body, "레큐바디");
+  // console.log(req.body, "레큐바디");
+  // const id = req.body.id;
+  // const password = req.body.password;
+  const profile = req.file;
 
   console.log(req.file, "파일");
-  res.json({ url: `/img/${req.file.filename}` });
+  // res.json({ url: `/img/${req.file.filename}` });
   // FormData의 경우 req로 부터 데이터를 얻을수 없다.
   // upload 핸들러(multer)를 통해서 데이터를 읽을 수 있다
 
   //   function insertRecord(req, res) {
   // req.files.forEach((e) => {
-  // console.log(e.filename);
-  // });
-  console.log(req.body, "레큐바디");
-  console.log(profile, "이미지");
+  // // console.log(e.filename);
+  // // });
+  // console.log(req.file, "파일");
+  // console.log(profile, "이미지");
 
   db.query(
-    "INSERT INTO userlist (userId, userPassword, userProfile) VALUES (?,?,?) ",
-    [id, password, profile],
+    "INSERT INTO userlist (userProfile) VALUES (?) ",
+    [profile],
     (err, result) => {
       if (err) {
         console.log(err);
