@@ -123,14 +123,16 @@ const upload = multer({
 // });
 
 app.post("/submit", upload.single("file"), (req, res) => {
-  console.log(req.files, "레큐파일ㄴ");
   console.log(req.body, "레큐바디");
   // console.log(req.body, "레큐바디");
   // const id = req.body.id;
   // const password = req.body.password;
-  const profile = req.file;
+  // const profile = req.file.originalname;
+  const profile = req.file.path;
 
   console.log(req.file, "파일");
+  console.log(profile, "프로파일");
+
   // res.json({ url: `/img/${req.file.filename}` });
   // FormData의 경우 req로 부터 데이터를 얻을수 없다.
   // upload 핸들러(multer)를 통해서 데이터를 읽을 수 있다
@@ -141,15 +143,18 @@ app.post("/submit", upload.single("file"), (req, res) => {
   // // });
   // console.log(req.file, "파일");
   // console.log(profile, "이미지");
+  console.log(profile, "프로필 들어갈 정보");
 
   db.query(
     "INSERT INTO userlist (userProfile) VALUES (?) ",
     [profile],
+
     (err, result) => {
       if (err) {
-        console.log(err);
+        console.log(err, "실패ㅠㅠㅠ");
       } else {
         res.send("userlist values inserted");
+        console.log("성공~");
       }
     }
   );
