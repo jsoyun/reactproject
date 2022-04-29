@@ -32,6 +32,8 @@ function Signup() {
 
     let formData = new FormData();
     formData.append("file", image.data);
+    // formData.append("posts", [ id, password ]);
+    formData.append("posts", [{ id: id, password: password }]);
 
     console.log(image.data, "선택한이미지! ");
     console.log(formData, "들어가기전폼데이터");
@@ -39,12 +41,6 @@ function Signup() {
     Axios.post(
       "http://localhost:3001/submit",
 
-      // {
-      //   id: id,
-      //   password: password,
-      //   formData,
-      //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      // }
       // {
       //   id: id,
       //   password: password,

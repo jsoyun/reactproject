@@ -8,6 +8,8 @@ const path = require("path");
 app.use(cors());
 
 app.use(express.json());
+//bodyparser사라지고 이거랑 위에꺼쓴다는데 과연..
+app.use(express.urlencoded({ extended: false }));
 //이거 필요한거임?
 app.use(express.static("Images"));
 
@@ -123,12 +125,22 @@ const upload = multer({
 // });
 
 app.post("/submit", upload.single("file"), (req, res) => {
-  console.log(req.body, "레큐바디");
+  console.log(req.body.posts, "레큐바디");
+  console.log(req.body, "바디");
+  console.log(JSON.stringify(req.body.posts), "spsp");
+
   // console.log(req.body, "레큐바디");
-  // const id = req.body.id;
-  // const password = req.body.password;
+  const id = req.body.posts.id;
+  const password = req.body.posts.password;
+  // const password = req.body.posts;
   // const profile = req.file.originalname;
   const profile = req.file.path;
+  console.log(id, password, "아이디랑 패스워드");
+
+  //   res.send(`
+  //   body: ${JSON.stringify(req.body)},<br/>
+  //   file: ${JSON.stringify(req.file)}
+  // `);
 
   console.log(req.file, "파일");
   console.log(profile, "프로파일");
@@ -146,15 +158,15 @@ app.post("/submit", upload.single("file"), (req, res) => {
   console.log(profile, "프로필 들어갈 정보");
 
   db.query(
-    "INSERT INTO userlist (userProfile) VALUES (?) ",
-    [profile],
+    "INSERT INTO userlist (userId,userPassword,userProfile) VALUES (?,?,?) ",
+    [id, password, profile],
 
     (err, result) => {
       if (err) {
         console.log(err, "실패ㅠㅠㅠ");
       } else {
         res.send("userlist values inserted");
-        console.log("성공~");
+        // console.log("성공~");
       }
     }
   );
