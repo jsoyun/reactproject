@@ -1,12 +1,11 @@
-import Test from "../components/Test";
-// import Testcopy from "../components/Testcopy";
-
+import Admin from "../components/Admin";
 const Home = () => {
   return (
     <div>
       {/* <Header /> */}
       <h1>홈</h1>
-      <Test />
+      <Admin />
+
       {/* <Testcopy /> */}
 
       {/* <Footer /> */}
