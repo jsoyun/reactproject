@@ -32,8 +32,9 @@ function Signup() {
 
     let formData = new FormData();
     formData.append("file", image.data);
-    // formData.append("posts", { id: id }, { password: id });
-    //formData.append("posts", [{ id: id, password: password }]);
+
+    formData.append("iddd", id);
+    formData.append("password", password);
 
     console.log(image.data, "선택한이미지! ");
     console.log(formData, "들어가기전폼데이터");
