@@ -6,10 +6,13 @@ const cors = require("cors");
 const multer = require("multer");
 const path = require("path");
 app.use(cors());
+//바디파서가 안되는거같아서
+const bodyParser = require("body-parser");
 
-app.use(express.json());
 //bodyparser사라지고 이거랑 위에꺼쓴다는데 과연..
-app.use(express.urlencoded({ extended: false }));
+//app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(express.json());
 //이거 필요한거임?
 app.use(express.static("Images"));
 
@@ -130,11 +133,12 @@ app.post("/submit", upload.single("file"), (req, res) => {
   console.log(JSON.stringify(req.body.posts), "spsp");
 
   // console.log(req.body, "레큐바디");
-  const id = req.body.posts.id;
-  const password = req.body.posts.password;
+
   // const password = req.body.posts;
   // const profile = req.file.originalname;
   const profile = req.file.path;
+  const id = req.body;
+  const password = req.body;
   console.log(id, password, "아이디랑 패스워드");
 
   //   res.send(`

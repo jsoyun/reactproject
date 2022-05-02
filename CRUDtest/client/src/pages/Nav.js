@@ -37,6 +37,9 @@ function Nav() {
       <Link to="/sign">
         <Button>로그인</Button>
       </Link>
+      <Link to="/mypage">
+        <Button>마이페이지</Button>
+      </Link>
     </Navi>
   );
 }
