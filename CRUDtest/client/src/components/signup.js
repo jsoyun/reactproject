@@ -4,8 +4,8 @@ import "./signup.css";
 
 function Signup() {
   //회원가입 값
-  // const [id, setId] = useState("");
-  // const [password, setPassword] = useState("");
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
 
   // const [imageUpload, setImageUpload] = useState(null);
 
