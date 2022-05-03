@@ -121,6 +121,18 @@ app.post("/submit", upload.single("file"), (req, res) => {
   );
 });
 
+app.get("/showUserDB", (req, res) => {
+  db.query("SELECT * FROM userlist", (err, result) => {
+    if (err) {
+      console.log(err, "에러요");
+    } else {
+      res.send(result);
+    }
+  });
+
+  console.log("백이요");
+});
+
 app.listen(3001, () => {
   console.log("your server is running on 3001~! yeah");
 });
