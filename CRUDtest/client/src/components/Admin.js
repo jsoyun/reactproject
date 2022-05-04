@@ -5,7 +5,7 @@ import "./Admin.css";
 
 const Admin = (props) => {
   const [user, setUser] = useState([]);
-  const { alt, ...otherProps } = props;
+  //   const { alt, ...otherProps } = props;
 
   const showUserDB = () => {
     Axios.get("http://localhost:3001/showUserDB").then((response) => {
@@ -25,7 +25,7 @@ const Admin = (props) => {
               <h3>{value.id}</h3>
               <h3>{value.userId}</h3>
               <h3>{value.userPassword}</h3>
-              <img src={value.userProfile} alt="profile" />
+              <img src="Images\1651471331061.png" alt={value.userProfile} />
               {/* <img alt={value.userProfile} {otherProps...} /> */}
             </div>
           );
