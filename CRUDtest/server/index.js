@@ -9,6 +9,7 @@ app.use(cors());
 
 //이거 필요한거임?
 // app.use(express.static("Images"));
+//testtesttest
 
 const db = mysql.createConnection({
   user: "root",
