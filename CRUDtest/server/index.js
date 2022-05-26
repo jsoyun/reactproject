@@ -84,7 +84,7 @@ app.delete("/delete/:id", (req, res) => {
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, "Images/");
+      cb(null, "../client/public/Image/");
     },
     filename: function (req, file, cb) {
       cb(null, new Date().valueOf() + path.extname(file.originalname));

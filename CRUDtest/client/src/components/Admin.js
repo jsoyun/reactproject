@@ -17,6 +17,8 @@ const Admin = (props) => {
   return (
     <div>
       <button onClick={showUserDB}>유저정보띄우기</button>
+      {/* <img src="./Image/다운로드 (1).png"></img> */}
+
       <div>
         <h3>유저정보</h3>
         {user.map((value, index) => {
@@ -25,11 +27,12 @@ const Admin = (props) => {
               <h3>{value.id}</h3>
               <h3>{value.userId}</h3>
               <h3>{value.userPassword}</h3>
-              <img>{value.path}</img>
-              <h3>뭐지이미지안들어감</h3>
-              <img src="server/Images/1651471331061.png" alt={value.filename} />
 
-              {/* <img alt={value.userProfile} {otherProps...} /> */}
+              <img
+                src={`./Image/${value.filename}`}
+                alt={`${value.filename}`}
+              />
+              <h3>뭐지이미지안들어감</h3>
             </div>
           );
         })}
