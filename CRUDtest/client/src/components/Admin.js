@@ -25,7 +25,10 @@ const Admin = (props) => {
               <h3>{value.id}</h3>
               <h3>{value.userId}</h3>
               <h3>{value.userPassword}</h3>
-              <img src="Images\1651471331061.png" alt={value.userProfile} />
+              <img>{value.path}</img>
+              <h3>뭐지이미지안들어감</h3>
+              <img src="server/Images/1651471331061.png" alt={value.filename} />
+
               {/* <img alt={value.userProfile} {otherProps...} /> */}
             </div>
           );
