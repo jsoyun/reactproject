@@ -29,8 +29,9 @@ const Admin = (props) => {
               <h3>{value.userPassword}</h3>
 
               <img
-                src={`./Image/${value.filename}`}
-                alt={`${value.filename}`}
+                src={`./Image/${value.userProfile}`}
+                alt="회원사진"
+                style={{ height: "200px" }}
               />
               <h3>뭐지이미지안들어감</h3>
             </div>

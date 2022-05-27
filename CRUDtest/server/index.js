@@ -97,7 +97,7 @@ app.post("/submit", upload.single("file"), (req, res) => {
   console.log(JSON.stringify(req.body), "JSON.stringify(req.body)");
   console.log(req.body, "바디");
 
-  const profile = req.file.path;
+  const profile = req.file.filename;
   const id = req.body.iddd;
   const password = req.body.password;
 
