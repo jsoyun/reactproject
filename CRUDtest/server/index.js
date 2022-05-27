@@ -79,7 +79,7 @@ app.delete("/delete/:id", (req, res) => {
   });
 });
 
-///////
+//////////
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -121,6 +121,21 @@ app.post("/submit", upload.single("file"), (req, res) => {
       }
     }
   );
+});
+
+////혼자 해봄 삭제도요
+app.delete("/deleteUserDB/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(id);
+  //테이블이름, 보낼거 , id하나만 보낼거라서 배열로 안묶어줌 걍보내
+  db.query("DELETE FROM userlist WHERE id = ?", id, (err, result) => {
+    console.log(id);
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
 });
 
 app.get("/showUserDB", (req, res) => {

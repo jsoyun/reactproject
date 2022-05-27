@@ -54,16 +54,7 @@ function Signup() {
           "Content-Type": "multipart/form-data",
         },
       }
-    ).then(() =>
-      console.log(
-        formData,
-        "then이후 폼데이터",
-        image,
-        "이건뭐",
-        image.data,
-        "이미지데이터"
-      )
-    );
+    ).then(() => alert(id + "님 어서오세요"), (window.location.href = "/sign"));
   };
 
   const handleFileChange = (e) => {
@@ -86,7 +77,7 @@ function Signup() {
       <div>
         <input placeholder="비밀번호 확인"></input>
       </div>
-      {image.preview && <img src={image.preview} width="100" height="100" />}
+      {image.preview && <img src={image.preview} width="100" />}
       <input
         type="file"
         onChange={handleFileChange}

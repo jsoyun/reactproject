@@ -14,6 +14,20 @@ const Admin = (props) => {
     });
   };
 
+  const deleteUserDB = (id) => {
+    console.log(id);
+    Axios.delete(`http://localhost:3001/deleteUserDB/${id}`).then(
+      (response) => {
+        setUser(
+          user.filter((val) => {
+            console.log(val.id, "벨류쩜아이디");
+            return val.id != id;
+          })
+        );
+      }
+    );
+  };
+
   return (
     <div>
       <button onClick={showUserDB}>유저정보띄우기</button>
@@ -33,11 +47,16 @@ const Admin = (props) => {
                 alt="회원사진"
                 style={{ height: "200px" }}
               />
-              <h3>뭐지이미지안들어감</h3>
+              <button
+                onClick={() => {
+                  deleteUserDB(value.id);
+                }}
+              >
+                삭제
+              </button>
             </div>
           );
         })}
-        <button>삭제</button>
       </div>
     </div>
   );
