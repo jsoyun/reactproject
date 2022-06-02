@@ -5,11 +5,17 @@ import "./Admin.css";
 
 const Admin = (props) => {
   const [user, setUser] = useState([]);
+
   //   const { alt, ...otherProps } = props;
 
   const showUserDB = () => {
     Axios.get("http://localhost:3001/showUserDB").then((response) => {
       setUser(response.data);
+      console.log(response.data, "리스폰스데이터");
+      if (response.data.length === 0) {
+        alert("유저정보없음");
+      }
+
       console.log(user, "유저");
     });
   };
@@ -31,7 +37,6 @@ const Admin = (props) => {
   return (
     <div>
       <button onClick={showUserDB}>유저정보띄우기</button>
-      {/* <img src="./Image/다운로드 (1).png"></img> */}
 
       <div>
         <h3>유저정보</h3>
