@@ -13,7 +13,7 @@ const Admin = (props) => {
       setUser(response.data);
       console.log(response.data, "리스폰스데이터");
       if (response.data.length === 0) {
-        alert("유저정보없음");
+        alert("커몬 등록해줘");
       }
 
       console.log(user, "유저");
